@@ -11,7 +11,7 @@ jobs:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: false
+      - run: "false"
 workflows:
   version: 2
   build_and_test:
