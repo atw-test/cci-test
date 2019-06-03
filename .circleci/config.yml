@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          - at: /tmp
+          at: /tmp
       - run: cat /tmp/test
 workflows:
   version: 2
