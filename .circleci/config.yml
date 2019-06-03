@@ -1,17 +1,24 @@
 version: 2.1
 jobs:
-  build:
+  create:
+    working_directory: /tmp
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: echo hello
-  test:
+      - run: echo hello > test
+      - persist_to_workspace:
+         root: .
+         paths:
+           - test
+  read:
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: "false"
+      - attach_workspace:
+          - at: /tmp
+      - run: cat /tmp/test
 workflows:
   version: 2
   build_and_test:
