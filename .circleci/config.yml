@@ -26,7 +26,3 @@ workflows:
       - read:
           requires:
             - create
-      - hold:
-          type: approval
-          requires:
-            - read
