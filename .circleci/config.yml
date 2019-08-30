@@ -24,6 +24,6 @@ workflows:
     jobs:
       - create
       - read:
-          context: for everyone
+          context: t-only
           requires:
             - create
