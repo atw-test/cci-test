@@ -24,6 +24,6 @@ workflows:
     jobs:
       - create
       - read:
-          context: foo
+          context: admin only
           requires:
             - create
