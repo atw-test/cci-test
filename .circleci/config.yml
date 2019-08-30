@@ -17,17 +17,22 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp
-      - run: echo $SECRET
+      - run: cat /tmp/test
+  deploy:
+    docker:
+      - image: circleci/clojure:lein-2.9.0
+    steps:
+      - checkout
+      - run: echo deployed.
 workflows:
   version: 2
   build_and_test:
     jobs:
       - create
       - read:
-          context: admin only
           requires:
             - create
-            - hold
-      - hold:
-          type: approval
-
+      - deploy:
+          filters:
+            branches:
+              only: deploy
