@@ -27,3 +27,7 @@ workflows:
           context: admin only
           requires:
             - create
+      - hold:
+          type: approval
+          requires:
+            - read
