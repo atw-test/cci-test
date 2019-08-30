@@ -13,11 +13,12 @@ jobs:
   read:
     docker:
       - image: circleci/clojure:lein-2.9.0
+    context: for everyone
     steps:
       - checkout
       - attach_workspace:
           at: /tmp
-      - run: sleep 30
+      - run: echo $SECRET
 workflows:
   version: 2
   build_and_test:
