@@ -13,7 +13,6 @@ jobs:
   read:
     docker:
       - image: circleci/clojure:lein-2.9.0
-    context: for everyone
     steps:
       - checkout
       - attach_workspace:
@@ -25,5 +24,6 @@ workflows:
     jobs:
       - create
       - read:
+          context: for everyone
           requires:
             - create
