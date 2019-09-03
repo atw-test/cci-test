@@ -18,12 +18,12 @@ jobs:
       - attach_workspace:
           at: /tmp
       - run: cat /tmp/test
-  deploy:
+  tag-only:
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: echo deployed.
+      - run: true
 workflows:
   version: 2
   build_and_test:
@@ -32,7 +32,7 @@ workflows:
       - read:
           requires:
             - create
-      - deploy:
+      - tag-only:
           filters:
-            branches:
-              only: deploy
+            tags
+              only: test
