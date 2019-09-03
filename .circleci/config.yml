@@ -35,4 +35,4 @@ workflows:
       - tag-only:
           filters:
             tags:
-              only: test
+              only: "test"
