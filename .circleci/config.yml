@@ -18,7 +18,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - run: cat /tmp/test
-  tag-only:
+  scheduled:
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
@@ -32,7 +32,13 @@ workflows:
       - read:
           requires:
             - create
-      - tag-only:
+  nightly:
+    jobs:
+      - scheduled
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
           filters:
-            tags:
-              only: /test/
+            branches:
+              only:
+                - org
