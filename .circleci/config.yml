@@ -17,7 +17,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp
-      - run: cat /tmp/test
+      - run: sleep 120
   scheduled:
     docker:
       - image: circleci/clojure:lein-2.9.0
