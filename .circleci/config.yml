@@ -43,4 +43,4 @@ workflows:
             - read
           filters:
             tags:
-              only: /^v.+/
+              only: /v.+/
