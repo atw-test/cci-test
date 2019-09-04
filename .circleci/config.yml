@@ -29,7 +29,13 @@ workflows:
   build_and_test:
     jobs:
       - create
+          filters:
+            tags:
+              only: /.*/
       - read:
+          filters:
+            tags:
+              only: /.*/
           requires:
             - create
       - tag-only:
