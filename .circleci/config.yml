@@ -23,7 +23,7 @@ jobs:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: true
+      - run: cat test.txt
 workflows:
   version: 2
   build_and_test:
@@ -37,7 +37,7 @@ workflows:
       - scheduled
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "0 14 * * *"
           filters:
             branches:
               only:
