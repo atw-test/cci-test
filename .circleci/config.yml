@@ -32,8 +32,6 @@ workflows:
       - read:
           requires:
             - create
-  tag-only:
-    jobs:
       - tag-only:
           filters:
             tags:
