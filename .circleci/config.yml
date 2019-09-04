@@ -33,6 +33,8 @@ workflows:
           requires:
             - create
       - tag-only:
+          requires:
+            - read
           filters:
             tags:
               only: /v.+/
