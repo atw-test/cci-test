@@ -33,6 +33,7 @@ workflows:
           requires:
             - create
   tag-only:
+    jobs:
       - tag-only:
           filters:
             tags:
