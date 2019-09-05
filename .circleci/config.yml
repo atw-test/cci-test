@@ -35,4 +35,4 @@ workflows:
       - tag-only:
           filters:
             tags:
-              only: only: /v.+/
+              only: /v.+/
