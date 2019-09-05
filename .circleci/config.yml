@@ -34,5 +34,5 @@ workflows:
             - create
       - tag-only:
           filters:
-            tags
+            tags:
               only: test
