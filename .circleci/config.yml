@@ -1,28 +1,14 @@
 version: 2
 jobs:
-  create:
-    docker:
-      - image: circleci/clojure:lein-2.9.0
-    steps:
-      - checkout
-      - run: echo hello > /tmp/test
-      - persist_to_workspace:
-         root: /tmp
-         paths:
-           - test
   read:
     docker:
       - image: circleci/clojure:lein-2.9.0
+    context: foo
     steps:
       - checkout
-      - attach_workspace:
-          at: /tmp
-      - run: sleep 120
+      - run: echo $SECRET
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - create
-      - read:
-          requires:
-            - create
+      - read
