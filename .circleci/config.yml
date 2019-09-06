@@ -11,5 +11,5 @@ workflows:
   build_and_test:
     jobs:
       - read:
-          context: foo
+          context: bar
 
