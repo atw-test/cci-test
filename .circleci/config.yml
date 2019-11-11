@@ -23,6 +23,6 @@ workflows:
   build_and_test:
     jobs:
       - foo
-      - bar
+      - bar:
           requires:
             - bar1
