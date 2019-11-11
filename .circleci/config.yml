@@ -26,3 +26,4 @@ workflows:
       - bar:
           requires:
             - bar1
+      - bar1
