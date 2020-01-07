@@ -1,29 +1,29 @@
 version: 2
 jobs:
-  foo:
+  create:
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: sleep 30
-  bar:
+      - run: echo hello > /tmp/test
+      - persist_to_workspace:
+         root: /tmp
+         paths:
+           - test
+  read:
     docker:
       - image: circleci/clojure:lein-2.9.0
     steps:
       - checkout
-      - run: sleep 60
-  bar1:
-    docker:
-      - image: circleci/clojure:lein-2.9.0
-    steps:
-      - checkout
-      - run: "true"
+      - attach_workspace:
+          at: /tmp
+      - run: echo $tanya-test
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - foo
-      - bar:
+      - create
+      - read:
+          context: tanya-test
           requires:
-            - bar1
-      - bar1
+            - create
